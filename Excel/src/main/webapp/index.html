@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Generator" content="EditPlus®">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <title>Document</title>
+    <meta http-equiv="Content-Type" content="multipart/form-data; charset=utf-8" />
+</head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Index</title>
+<script src="jquery-3.3.1.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        // onclick是js中的
+        $("#submit").click(function () {
+           //alert(12);
+            var formData = new FormData($("#file")[0]);
+            if(formData==null){
+                alert(00);
+                return;
+            }
+            $.ajax({
+                url:"excel/insert",
+                type : "POST",
+               // url : "fileController/inputImg",
+                data : formData,
+                cache : false,
+                contentType : false,
+                processData : false,
+                async : false,
+                success : function(data) {
+                    alert(data);
+                    return;
+
+                }
+            });
+        });
+    });
+
+</script>
+<style type="text/css">
+
+
+</style>
+
+
+</body>
+<!--需要定义表单的id-->
+
+    <!--只是需要form-->
+    <form id="file"   method="POST" enctype="multipart/form-data">
+        <input type="file" name="inputfil" id="inputfil" formenctype="multipart/form-data">
+
+
+    </form>
+<input type="submit" value="提交" id="submit">
+
+
+</body>
+</html>
